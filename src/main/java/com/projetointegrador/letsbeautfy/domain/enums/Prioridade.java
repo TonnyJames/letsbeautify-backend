@@ -1,4 +1,4 @@
-package com.projetointegrador.letsbeautfy.enums;
+package com.projetointegrador.letsbeautfy.domain.enums;
 
 public enum Prioridade {
 

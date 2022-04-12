@@ -1,13 +1,13 @@
-package com.projetointegrador.letsbeautfy.enums;
+package com.projetointegrador.letsbeautfy.domain.enums;
 
-public enum Perfil {
+public enum Status {
 
-    ADMIN(0, "ROLE_ADMIN"), CLIENTE(1, "ROLE_CLIENTE"), COLABORADOR(2, "ROLE_COLAB");
+    ABERTO(0, "ROLE_ABERTO"), ANDAMENTO(1, "ROLE_ANDAMENTO"), ENCERRADO(2, "ROLE_ENCERRADO");
 
     private Integer codigo;
     private String descricao;
 
-    Perfil(Integer codigo, String descricao) {
+    Status(Integer codigo, String descricao) {
         this.codigo = codigo;
         this.descricao = descricao;
     }
@@ -20,15 +20,15 @@ public enum Perfil {
         return descricao;
     }
 
-    public static Perfil toEnum(Integer cod){
+    public static Status toEnum(Integer cod){
         if(cod == null){
             return null;
         }
-        for(Perfil x : Perfil.values()) {
+        for(Status x : Status.values()) {
             if(cod.equals(x.getCodigo())){
                 return x;
             }
         }
-        throw new IllegalArgumentException("Perfil inválido");
+        throw new IllegalArgumentException("Status inválido");
     }
 }
