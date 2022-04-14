@@ -36,7 +36,7 @@ public class DBService {
         Cliente cli1 = new Cliente(null, "Jack", "754.092.730-52", "jack@mail.com", "123");
         Cliente cli2 = new Cliente(null, "Lia", "364.647.900-05", "Lia@mail.com", "123");
         Cliente cli3 = new Cliente(null, "Fatima", "759.097.140-58", "fatima@mail.com", "123");
-        Cliente cli4 = new Cliente(null, "Graziella", "759.097.140-58", "graziella@mail.com", "123");
+        Cliente cli4 = new Cliente(null, "Graziella", "620.765.620-28", "graziella@mail.com", "123");
 
         Agendamentos agend1 = new Agendamentos(null, Prioridade.ALTA, Status.ENCERRADO, "visita 001", "Primeira visita", colab1,cli1);
         Agendamentos agend2 = new Agendamentos(null, Prioridade.NORMAL, Status.ABERTO, "visita 002", "Cabelos e unhas ", colab2,cli2);

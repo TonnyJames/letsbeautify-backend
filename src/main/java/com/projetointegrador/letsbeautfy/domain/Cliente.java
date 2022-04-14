@@ -1,5 +1,6 @@
 package com.projetointegrador.letsbeautfy.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.projetointegrador.letsbeautfy.domain.enums.Perfil;
 
 import javax.persistence.Entity;
@@ -12,6 +13,7 @@ public class Cliente extends Pessoa{
 
     private static final long serialVersionUID = 1L;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "cliente")
     private List<Agendamentos> agendamentos = new ArrayList<>();
 
