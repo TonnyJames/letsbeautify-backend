@@ -36,13 +36,14 @@ public class DBService {
         Cliente cli1 = new Cliente(null, "Jack", "754.092.730-52", "jack@mail.com", "123");
         Cliente cli2 = new Cliente(null, "Lia", "364.647.900-05", "Lia@mail.com", "123");
         Cliente cli3 = new Cliente(null, "Fatima", "759.097.140-58", "fatima@mail.com", "123");
+        Cliente cli4 = new Cliente(null, "Graziella", "759.097.140-58", "graziella@mail.com", "123");
 
         Agendamentos agend1 = new Agendamentos(null, Prioridade.ALTA, Status.ENCERRADO, "visita 001", "Primeira visita", colab1,cli1);
         Agendamentos agend2 = new Agendamentos(null, Prioridade.NORMAL, Status.ABERTO, "visita 002", "Cabelos e unhas ", colab2,cli2);
         Agendamentos agend3 = new Agendamentos(null, Prioridade.NORMAL, Status.ABERTO, "visita 003", "limpeza de pele", colab3,cli3);
 
         colaboradorRepository.saveAll(Arrays.asList(colab1, colab2, colab3));
-        clienteRepository.saveAll(Arrays.asList(cli1, cli2, cli3));
+        clienteRepository.saveAll(Arrays.asList(cli1, cli2, cli3, cli4));
         agendamentosRepository.saveAll(Arrays.asList(agend1, agend2, agend3));
     }
 }
