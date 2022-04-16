@@ -2,6 +2,7 @@ package com.projetointegrador.letsbeautfy.services;
 
 import com.projetointegrador.letsbeautfy.domain.Colaborador;
 import com.projetointegrador.letsbeautfy.repositories.ColaboradorRepository;
+import com.projetointegrador.letsbeautfy.services.exceptions.ObjectnotFoudException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +16,6 @@ public class ColaboradorService {
 
     public Colaborador findById(Integer id){
         Optional<Colaborador> obj = repository.findById(id);
-        return obj.orElse(null);
+        return obj.orElseThrow(() -> new ObjectnotFoudException("Objeto não encontrado! Id: " + id));
     }
 }
