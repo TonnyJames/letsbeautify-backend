@@ -1,6 +1,7 @@
 package com.projetointegrador.letsbeautfy.resources;
 
 import com.projetointegrador.letsbeautfy.domain.Colaborador;
+import com.projetointegrador.letsbeautfy.domain.dtos.ColaboradorDTO;
 import com.projetointegrador.letsbeautfy.services.ColaboradorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -19,8 +20,8 @@ public class ColaboradorResource {
     private ColaboradorService service;
 
     @GetMapping(value = "/{id}")
-    public ResponseEntity<Colaborador> findById(@PathVariable Integer id){
+    public ResponseEntity<ColaboradorDTO> findById(@PathVariable Integer id){
         Colaborador obj = service.findById(id);
-        return ResponseEntity.ok(obj);
+        return ResponseEntity.ok(new ColaboradorDTO(obj));
     }
 }
