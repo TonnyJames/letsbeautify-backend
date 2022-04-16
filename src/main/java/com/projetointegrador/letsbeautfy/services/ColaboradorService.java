@@ -1,6 +1,7 @@
 package com.projetointegrador.letsbeautfy.services;
 
 import com.projetointegrador.letsbeautfy.domain.Colaborador;
+import com.projetointegrador.letsbeautfy.domain.dtos.ColaboradorDTO;
 import com.projetointegrador.letsbeautfy.repositories.ColaboradorRepository;
 import com.projetointegrador.letsbeautfy.services.exceptions.ObjectnotFoudException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,5 +23,11 @@ public class ColaboradorService {
 
     public List<Colaborador> findAll() {
         return repository.findAll();
+    }
+
+    public Colaborador create(ColaboradorDTO objDTO) {
+        objDTO.setId(null);
+        Colaborador newObj = new Colaborador(objDTO);
+        return repository.save(newObj);
     }
 }

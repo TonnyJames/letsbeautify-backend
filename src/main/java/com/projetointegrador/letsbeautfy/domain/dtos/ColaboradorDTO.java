@@ -28,6 +28,7 @@ public class ColaboradorDTO implements Serializable {
 
     public ColaboradorDTO() {
         //vazio
+        addPerfis(Perfil.CLIENTE);
     }
 
     public ColaboradorDTO(Colaborador obj) {
@@ -38,6 +39,7 @@ public class ColaboradorDTO implements Serializable {
         this.senha = obj.getSenha();
         this.perfis = obj.getPerfis().stream().map(x -> x.getCodigo()).collect(Collectors.toSet());
         this.dataCriacao = obj.getDataCriacao();
+        addPerfis(Perfil.CLIENTE);
     }
 
     public Integer getId() {
