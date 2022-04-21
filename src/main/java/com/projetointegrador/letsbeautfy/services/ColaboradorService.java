@@ -46,6 +46,14 @@ public class ColaboradorService {
         return repository.save(oldObj);
     }
 
+    public void delete(Integer id) {
+        Colaborador obj = findById(id);
+        if(obj.getAgendamentos().size() > 0){
+            throw new DataIntegrityViolationException("O colaborador tem agendamentos e não pode ser deletado!");
+        }
+            repository.deleteById(id);
+    }
+
     private void validaPorCpfEEmail(ColaboradorDTO objDTO) {
         Optional<Pessoa> obj = pessoaRepository.findByCpf(objDTO.getCpf());
         if(obj.isPresent() && obj.get().getId() != objDTO.getId()){
@@ -56,5 +64,6 @@ public class ColaboradorService {
                 throw new DataIntegrityViolationException("E-mail já cadastrado");
             }
     }
+
 
 }

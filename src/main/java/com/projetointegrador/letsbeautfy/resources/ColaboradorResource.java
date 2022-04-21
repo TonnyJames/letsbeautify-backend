@@ -47,4 +47,10 @@ public class ColaboradorResource {
         Colaborador obj = service.update(id, objDTO);
         return ResponseEntity.ok().body(new ColaboradorDTO(obj));
     }
+
+    @DeleteMapping(value = "/{id}")
+    public ResponseEntity<ColaboradorDTO> delete(@PathVariable Integer id){
+        service.delete(id);
+        return ResponseEntity.noContent().build();
+    }
 }
