@@ -41,4 +41,10 @@ public class ColaboradorResource {
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(newObj.getId()).toUri();
         return ResponseEntity.created(uri).build();
     }
+
+    @PutMapping(value = "/{id}")
+    public ResponseEntity<ColaboradorDTO> update(@PathVariable Integer id, @Valid @RequestBody ColaboradorDTO objDTO){
+        Colaborador obj = service.update(id, objDTO);
+        return ResponseEntity.ok().body(new ColaboradorDTO(obj));
+    }
 }

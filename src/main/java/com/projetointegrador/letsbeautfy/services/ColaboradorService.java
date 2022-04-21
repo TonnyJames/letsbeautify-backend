@@ -10,6 +10,7 @@ import com.projetointegrador.letsbeautfy.services.exceptions.ObjectnotFoudExcept
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
 
@@ -37,6 +38,14 @@ public class ColaboradorService {
         return repository.save(newObj);
     }
 
+    public Colaborador update(Integer id, @Valid ColaboradorDTO objDto){
+        objDto.setId(id);
+        Colaborador oldObj = findById(id);
+        validaPorCpfEEmail(objDto);
+        oldObj = new Colaborador(objDto);
+        return repository.save(oldObj);
+    }
+
     private void validaPorCpfEEmail(ColaboradorDTO objDTO) {
         Optional<Pessoa> obj = pessoaRepository.findByCpf(objDTO.getCpf());
         if(obj.isPresent() && obj.get().getId() != objDTO.getId()){
@@ -47,4 +56,5 @@ public class ColaboradorService {
                 throw new DataIntegrityViolationException("E-mail já cadastrado");
             }
     }
+
 }
