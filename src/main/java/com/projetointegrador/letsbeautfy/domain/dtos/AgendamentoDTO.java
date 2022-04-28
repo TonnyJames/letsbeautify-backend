@@ -3,6 +3,7 @@ package com.projetointegrador.letsbeautfy.domain.dtos;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.projetointegrador.letsbeautfy.domain.Agendamento;
 
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.time.LocalDate;
 
@@ -15,11 +16,17 @@ public class AgendamentoDTO implements Serializable {
     private LocalDate dataAbertura = LocalDate.now();
     @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDate dataFechamento;
+    @NotNull(message = "O campo PRIORIDADE é obrigatório")
     private Integer prioridade;
+    @NotNull(message = "O campo STATUS é obrigatório")
     private Integer status;
+    @NotNull(message = "O campo TÍTULO é obrigatório")
     private String titulo;
+    @NotNull(message = "O campo OBSERVAÇÕES é obrigatório")
     private String observacoes;
+    @NotNull(message = "O campo COLABORADOR é obrigatório")
     private Integer colaborador;
+    @NotNull(message = "O campo CLIENTE é obrigatório")
     private Integer cliente;
     private String nomeColaborador;
     private String nomeCliente;

@@ -38,9 +38,11 @@ public class Agendamento implements Serializable {
     private Cliente cliente;
 
     public Agendamento() {
+        super();
     }
 
     public Agendamento(Integer id, Prioridade prioridade, Status status, String titulo, String observacoes, Colaborador colaborador, Cliente cliente) {
+        super();
         this.id = id;
         this.prioridade = prioridade;
         this.status = status;
