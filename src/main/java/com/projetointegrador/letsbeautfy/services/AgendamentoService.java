@@ -11,6 +11,7 @@ import com.projetointegrador.letsbeautfy.services.exceptions.ObjectnotFoudExcept
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -37,6 +38,15 @@ public class AgendamentoService {
         return repository.save(newAgendamento(objDTO));
     }
 
+    public Agendamento update(Integer id, AgendamentoDTO objDTO) {
+        objDTO.setId(id);
+        Agendamento oldObj = findById(id);
+        oldObj = newAgendamento(objDTO);
+        return repository.save(oldObj);
+    }
+
+
+
     private Agendamento newAgendamento(AgendamentoDTO obj){
         Colaborador colaborador = colaboradorService.findById(obj.getColaborador());
         Cliente cliente = clienteService.findById(obj.getCliente());
@@ -46,6 +56,10 @@ public class AgendamentoService {
             agendamento.setId(obj.getId());
         }
 
+        if (obj.getStatus().equals(2)){
+            agendamento.setDataFechamento(LocalDate.now());
+        }
+
         agendamento.setColaborador(colaborador);
         agendamento.setCliente(cliente);
         agendamento.setPrioridade(Prioridade.toEnum(obj.getPrioridade()));
@@ -53,4 +67,6 @@ public class AgendamentoService {
         agendamento.setObservacoes(obj.getObservacoes());
         return agendamento;
     }
+
+
 }

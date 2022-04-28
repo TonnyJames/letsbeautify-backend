@@ -36,7 +36,7 @@ public class AgendamentoDTO implements Serializable {
     }
 
     public AgendamentoDTO(Agendamento obj) {
-        this.id = id;
+        this.id = obj.getId();
         this.dataAbertura = obj.getDataAbertura();
         this.dataFechamento = obj.getDataFechamento();
         this.prioridade = obj.getPrioridade().getCodigo();
