@@ -10,7 +10,7 @@ import java.time.LocalDate;
 import java.util.Objects;
 
 @Entity
-public class Agendamentos implements Serializable {
+public class Agendamento implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -18,9 +18,9 @@ public class Agendamentos implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @JsonFormat(pattern = "dd=MM-yyyy")
+    @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDate dataAbertura = LocalDate.now();
-    @JsonFormat(pattern = "dd=MM-yyyy")
+    @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDate dataFechamento;
 
 
@@ -37,10 +37,10 @@ public class Agendamentos implements Serializable {
     @JoinColumn(name = "cliente_id")
     private Cliente cliente;
 
-    public Agendamentos() {
+    public Agendamento() {
     }
 
-    public Agendamentos(Integer id, Prioridade prioridade, Status status, String titulo, String observacoes, Colaborador colaborador, Cliente cliente) {
+    public Agendamento(Integer id, Prioridade prioridade, Status status, String titulo, String observacoes, Colaborador colaborador, Cliente cliente) {
         this.id = id;
         this.prioridade = prioridade;
         this.status = status;
@@ -126,7 +126,7 @@ public class Agendamentos implements Serializable {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Agendamentos that = (Agendamentos) o;
+        Agendamento that = (Agendamento) o;
         return Objects.equals(id, that.id);
     }
 

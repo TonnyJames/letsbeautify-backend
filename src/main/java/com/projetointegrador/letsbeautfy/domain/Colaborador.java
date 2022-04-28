@@ -17,7 +17,7 @@ public class Colaborador extends Pessoa{
 
     @JsonIgnore
     @OneToMany(mappedBy = "colaborador")
-    private List<Agendamentos> agendamentos = new ArrayList<>();
+    private List<Agendamento> agendamentos = new ArrayList<>();
 
     public Colaborador() {
         super();
@@ -39,11 +39,11 @@ public class Colaborador extends Pessoa{
         addPerfil(Perfil.CLIENTE);
     }
 
-    public List<Agendamentos> getAgendamentos() {
+    public List<Agendamento> getAgendamentos() {
         return agendamentos;
     }
 
-    public void setAgendamentos(List<Agendamentos> agendamentos) {
+    public void setAgendamentos(List<Agendamento> agendamentos) {
         this.agendamentos = agendamentos;
     }
 }
