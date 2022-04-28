@@ -6,6 +6,7 @@ import com.projetointegrador.letsbeautfy.services.exceptions.ObjectnotFoudExcept
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -17,5 +18,9 @@ public class AgendamentoService {
     public Agendamento findById(Integer id){
         Optional<Agendamento> obj = repository.findById(id);
         return obj.orElseThrow(() -> new ObjectnotFoudException("Objeto Não encontrado " + id));
+    }
+
+    public List<Agendamento> findAll() {
+        return repository.findAll();
     }
 }
