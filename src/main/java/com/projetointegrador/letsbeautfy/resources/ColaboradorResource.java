@@ -5,6 +5,7 @@ import com.projetointegrador.letsbeautfy.domain.dtos.ColaboradorDTO;
 import com.projetointegrador.letsbeautfy.services.ColaboradorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
@@ -35,6 +36,7 @@ public class ColaboradorResource {
         return ResponseEntity.ok().body(listSTO);
     }
 
+    @PreAuthorize("hasAnyRole('ADMIN')")
     @PostMapping
     public ResponseEntity<ColaboradorDTO> create(@Valid @RequestBody ColaboradorDTO objDTO){
         Colaborador newObj = service.create(objDTO);
@@ -42,12 +44,14 @@ public class ColaboradorResource {
         return ResponseEntity.created(uri).build();
     }
 
+    @PreAuthorize("hasAnyRole('ADMIN')")
     @PutMapping(value = "/{id}")
     public ResponseEntity<ColaboradorDTO> update(@PathVariable Integer id, @Valid @RequestBody ColaboradorDTO objDTO){
         Colaborador obj = service.update(id, objDTO);
         return ResponseEntity.ok().body(new ColaboradorDTO(obj));
     }
 
+    @PreAuthorize("hasAnyRole('ADMIN')")
     @DeleteMapping(value = "/{id}")
     public ResponseEntity<ColaboradorDTO> delete(@PathVariable Integer id){
         service.delete(id);

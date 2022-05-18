@@ -32,9 +32,9 @@ public class DBService {
         Colaborador colab1 = new Colaborador(null, "Jorge", "828.317.710-99", "jorge@mail.com", encoder.encode("123"));
         colab1.addPerfil(Perfil.ADMIN);
         Colaborador colab2 = new Colaborador(null, "Tonny", "862.373.200-67", "tonny@mail.com", encoder.encode("123"));
-        colab1.addPerfil(Perfil.ADMIN);
+        colab2.addPerfil(Perfil.ADMIN);
         Colaborador colab3 = new Colaborador(null, "Luiz", "098.146.930-22", "luiz@mail.com", encoder.encode("123"));
-        colab1.addPerfil(Perfil.COLABORADOR);
+        colab3.addPerfil(Perfil.COLABORADOR);
 
         Cliente cli1 = new Cliente(null, "Jack", "754.092.730-52", "jack@mail.com", encoder.encode("123"));
         Cliente cli2 = new Cliente(null, "Lia", "364.647.900-05", "Lia@mail.com", encoder.encode("123"));
