@@ -11,6 +11,7 @@ import com.projetointegrador.letsbeautfy.repositories.AgendamentosRepository;
 import com.projetointegrador.letsbeautfy.repositories.ClienteRepository;
 import com.projetointegrador.letsbeautfy.repositories.ColaboradorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
@@ -24,19 +25,21 @@ public class DBService {
     private ClienteRepository clienteRepository;
     @Autowired
     private AgendamentosRepository agendamentosRepository;
+    @Autowired
+    private BCryptPasswordEncoder encoder;
 
     public void instanciaDB(){
-        Colaborador colab1 = new Colaborador(null, "Jorge", "828.317.710-99", "jorge@mail.com", "123");
+        Colaborador colab1 = new Colaborador(null, "Jorge", "828.317.710-99", "jorge@mail.com", encoder.encode("123"));
         colab1.addPerfil(Perfil.ADMIN);
-        Colaborador colab2 = new Colaborador(null, "Tonny", "862.373.200-67", "tonny@mail.com", "123");
+        Colaborador colab2 = new Colaborador(null, "Tonny", "862.373.200-67", "tonny@mail.com", encoder.encode("123"));
         colab1.addPerfil(Perfil.ADMIN);
-        Colaborador colab3 = new Colaborador(null, "Luiz", "098.146.930-22", "luiz@mail.com", "123");
+        Colaborador colab3 = new Colaborador(null, "Luiz", "098.146.930-22", "luiz@mail.com", encoder.encode("123"));
         colab1.addPerfil(Perfil.COLABORADOR);
 
-        Cliente cli1 = new Cliente(null, "Jack", "754.092.730-52", "jack@mail.com", "123");
-        Cliente cli2 = new Cliente(null, "Lia", "364.647.900-05", "Lia@mail.com", "123");
-        Cliente cli3 = new Cliente(null, "Fatima", "759.097.140-58", "fatima@mail.com", "123");
-        Cliente cli4 = new Cliente(null, "Graziella", "620.765.620-28", "graziella@mail.com", "123");
+        Cliente cli1 = new Cliente(null, "Jack", "754.092.730-52", "jack@mail.com", encoder.encode("123"));
+        Cliente cli2 = new Cliente(null, "Lia", "364.647.900-05", "Lia@mail.com", encoder.encode("123"));
+        Cliente cli3 = new Cliente(null, "Fatima", "759.097.140-58", "fatima@mail.com", encoder.encode("123"));
+        Cliente cli4 = new Cliente(null, "Graziella", "620.765.620-28", "graziella@mail.com", encoder.encode("123"));
 
         Agendamento agend1 = new Agendamento(null, Prioridade.ALTA, Status.ENCERRADO, "visita 001", "Primeira visita", colab1,cli1);
         Agendamento agend2 = new Agendamento(null, Prioridade.NORMAL, Status.ABERTO, "visita 002", "Cabelos e unhas ", colab2,cli2);

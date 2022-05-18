@@ -8,6 +8,7 @@ import com.projetointegrador.letsbeautfy.repositories.PessoaRepository;
 import com.projetointegrador.letsbeautfy.services.exceptions.DataIntegrityViolationException;
 import com.projetointegrador.letsbeautfy.services.exceptions.ObjectnotFoudException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.validation.Valid;
@@ -21,6 +22,8 @@ public class ColaboradorService {
     private ColaboradorRepository repository;
     @Autowired
     private PessoaRepository pessoaRepository;
+    @Autowired
+    private BCryptPasswordEncoder encoder;
 
     public Colaborador findById(Integer id){
         Optional<Colaborador> obj = repository.findById(id);
@@ -33,6 +36,7 @@ public class ColaboradorService {
 
     public Colaborador create(ColaboradorDTO objDTO) {
         objDTO.setId(null);
+        objDTO.setSenha(encoder.encode(objDTO.getSenha()));
         validaPorCpfEEmail(objDTO);
         Colaborador newObj = new Colaborador(objDTO);
         return repository.save(newObj);
