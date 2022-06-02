@@ -42,11 +42,15 @@ public class ClienteService {
         return repository.save(newObj);
     }
 
-    public Cliente update(Integer id, @Valid ClienteDTO objDto){
-        objDto.setId(id);
+    public Cliente update(Integer id, @Valid ClienteDTO objDTO){
+        objDTO.setId(id);
         Cliente oldObj = findById(id);
-        validaPorCpfEEmail(objDto);
-        oldObj = new Cliente(objDto);
+
+        if(!objDTO.getSenha().equals(oldObj.getSenha())){
+            objDTO.setSenha(encoder.encode(objDTO.getSenha()));
+        }
+        validaPorCpfEEmail(objDTO);
+        oldObj = new Cliente(objDTO);
         return repository.save(oldObj);
     }
 
