@@ -42,11 +42,15 @@ public class ColaboradorService {
         return repository.save(newObj);
     }
 
-    public Colaborador update(Integer id, @Valid ColaboradorDTO objDto){
-        objDto.setId(id);
+    public Colaborador update(Integer id, @Valid ColaboradorDTO objDTO){
+        objDTO.setId(id);
         Colaborador oldObj = findById(id);
-        validaPorCpfEEmail(objDto);
-        oldObj = new Colaborador(objDto);
+
+        if(!objDTO.getSenha().equals(oldObj.getSenha())){
+            objDTO.setSenha(encoder.encode(objDTO.getSenha()));
+        }
+        validaPorCpfEEmail(objDTO);
+        oldObj = new Colaborador(objDTO);
         return repository.save(oldObj);
     }
 
