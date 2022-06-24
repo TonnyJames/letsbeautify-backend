@@ -13,12 +13,13 @@ public class AgendamentoDTO implements Serializable {
 
     private Integer id;
     @JsonFormat(pattern = "dd/MM/yyyy")
-    private LocalDate dataAbertura = LocalDate.now();
+    private LocalDate dataCriacao = LocalDate.now();
+    @NotNull
     @JsonFormat(pattern = "dd/MM/yyyy")
-    private LocalDate dataFechamento;
+    private String dataAgendada;
     @NotNull(message = "O campo PRIORIDADE é obrigatório")
     private Integer prioridade;
-    @NotNull(message = "O campo STATUS é obrigatório")
+    //@NotNull(message = "O campo STATUS é obrigatório")
     private Integer status;
     @NotNull(message = "O campo TÍTULO é obrigatório")
     private String titulo;
@@ -37,8 +38,8 @@ public class AgendamentoDTO implements Serializable {
 
     public AgendamentoDTO(Agendamento obj) {
         this.id = obj.getId();
-        this.dataAbertura = obj.getDataAbertura();
-        this.dataFechamento = obj.getDataFechamento();
+        this.dataCriacao = obj.getDataCriacao();
+        this.dataAgendada = obj.getDataAgendada().toString();
         this.prioridade = obj.getPrioridade().getCodigo();
         this.status = obj.getStatus().getCodigo();
         this.titulo = obj.getTitulo();
@@ -57,20 +58,20 @@ public class AgendamentoDTO implements Serializable {
         this.id = id;
     }
 
-    public LocalDate getDataAbertura() {
-        return dataAbertura;
+    public LocalDate getDataCriacao() {
+        return dataCriacao;
     }
 
-    public void setDataAbertura(LocalDate dataAbertura) {
-        this.dataAbertura = dataAbertura;
+    public void setDataCriacao(LocalDate dataCriacao) {
+        this.dataCriacao = dataCriacao;
     }
 
-    public LocalDate getDataFechamento() {
-        return dataFechamento;
+    public String getDataAgendada() {
+        return dataAgendada;
     }
 
-    public void setDataFechamento(LocalDate dataFechamento) {
-        this.dataFechamento = dataFechamento;
+    public void setDataAgendada(String dataAgendada) {
+        this.dataAgendada = dataAgendada;
     }
 
     public Integer getPrioridade() {

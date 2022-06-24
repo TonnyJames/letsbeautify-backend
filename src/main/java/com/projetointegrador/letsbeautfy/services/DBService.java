@@ -41,9 +41,9 @@ public class DBService {
         Cliente cli3 = new Cliente(null, "Fatima", "759.097.140-58", "fatima@mail.com", encoder.encode("123"));
         Cliente cli4 = new Cliente(null, "Graziella", "620.765.620-28", "graziella@mail.com", encoder.encode("123"));
 
-        Agendamento agend1 = new Agendamento(null, Prioridade.ALTA, Status.ENCERRADO, "visita 001", "Primeira visita", colab1,cli1);
-        Agendamento agend2 = new Agendamento(null, Prioridade.NORMAL, Status.ABERTO, "visita 002", "Cabelos e unhas ", colab2,cli2);
-        Agendamento agend3 = new Agendamento(null, Prioridade.NORMAL, Status.ABERTO, "visita 003", "limpeza de pele", colab3,cli3);
+        Agendamento agend1 = new Agendamento(null, "2020-03-12", Prioridade.ALTA, Status.ENCERRADO, "visita 001", "Primeira visita", colab1,cli1);
+        Agendamento agend2 = new Agendamento(null, "2021-04-11", Prioridade.NORMAL, Status.ABERTO, "visita 002", "Cabelos e unhas ", colab2,cli2);
+        Agendamento agend3 = new Agendamento(null, "2022-05-29",Prioridade.NORMAL, Status.ABERTO, "visita 003", "limpeza de pele", colab3,cli3);
 
         colaboradorRepository.saveAll(Arrays.asList(colab1, colab2, colab3));
         clienteRepository.saveAll(Arrays.asList(cli1, cli2, cli3, cli4));

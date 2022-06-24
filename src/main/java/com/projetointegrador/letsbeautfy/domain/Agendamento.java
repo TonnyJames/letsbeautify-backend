@@ -19,10 +19,9 @@ public class Agendamento implements Serializable {
     private Integer id;
 
     @JsonFormat(pattern = "dd/MM/yyyy")
-    private LocalDate dataAbertura = LocalDate.now();
+    private LocalDate dataCriacao = LocalDate.now();
     @JsonFormat(pattern = "dd/MM/yyyy")
-    private LocalDate dataFechamento;
-
+    private LocalDate dataAgendada;
 
     private Prioridade prioridade;
     private Status status;
@@ -41,9 +40,10 @@ public class Agendamento implements Serializable {
         super();
     }
 
-    public Agendamento(Integer id, Prioridade prioridade, Status status, String titulo, String observacoes, Colaborador colaborador, Cliente cliente) {
+    public Agendamento(Integer id, String dataAgendada, Prioridade prioridade, Status status, String titulo, String observacoes, Colaborador colaborador, Cliente cliente) {
         super();
         this.id = id;
+        this.dataAgendada = LocalDate.parse(dataAgendada);
         this.prioridade = prioridade;
         this.status = status;
         this.titulo = titulo;
@@ -60,20 +60,20 @@ public class Agendamento implements Serializable {
         this.id = id;
     }
 
-    public LocalDate getDataAbertura() {
-        return dataAbertura;
+    public LocalDate getDataCriacao() {
+        return dataCriacao;
     }
 
-    public void setDataAbertura(LocalDate dataAbertura) {
-        this.dataAbertura = dataAbertura;
+    public void setDataCriacao(LocalDate dataCriacao) {
+        this.dataCriacao = dataCriacao;
     }
 
-    public LocalDate getDataFechamento() {
-        return dataFechamento;
+    public LocalDate getDataAgendada() {
+        return dataAgendada;
     }
 
-    public void setDataFechamento(LocalDate dataFechamento) {
-        this.dataFechamento = dataFechamento;
+    public void setDataAgendada(LocalDate dataAgendada) {
+        this.dataAgendada = dataAgendada;
     }
 
     public Prioridade getPrioridade() {

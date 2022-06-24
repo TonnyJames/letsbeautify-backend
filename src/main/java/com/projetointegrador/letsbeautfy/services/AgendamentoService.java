@@ -56,12 +56,13 @@ public class AgendamentoService {
             agendamento.setId(obj.getId());
         }
 
-        if (obj.getStatus().equals(2)){
-            agendamento.setDataFechamento(LocalDate.now());
-        }
-
+//        if (obj.getStatus().equals(2)){
+//          agendamento.setDataAgendada(LocalDate.now());
+//    }
+        agendamento.setDataAgendada(LocalDate.parse(obj.getDataAgendada()));
         agendamento.setColaborador(colaborador);
         agendamento.setCliente(cliente);
+        agendamento.setTitulo(obj.getTitulo());
         agendamento.setPrioridade(Prioridade.toEnum(obj.getPrioridade()));
         agendamento.setStatus(Status.toEnum(obj.getStatus()));
         agendamento.setObservacoes(obj.getObservacoes());
