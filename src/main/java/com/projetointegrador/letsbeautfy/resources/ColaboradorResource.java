@@ -32,8 +32,8 @@ public class ColaboradorResource {
     @GetMapping
     public ResponseEntity<List<ColaboradorDTO>> findAll(){
         List<Colaborador> list = service.findAll();
-        List<ColaboradorDTO> listSTO = list.stream().map(obj -> new ColaboradorDTO(obj)).collect(Collectors.toList());
-        return ResponseEntity.ok().body(listSTO);
+        List<ColaboradorDTO> listDTO = list.stream().map(obj -> new ColaboradorDTO(obj)).collect(Collectors.toList());
+        return ResponseEntity.ok().body(listDTO);
     }
 
     @PreAuthorize("hasAnyRole('ADMIN')")
