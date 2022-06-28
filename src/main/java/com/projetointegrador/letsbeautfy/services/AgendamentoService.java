@@ -4,8 +4,7 @@ import com.projetointegrador.letsbeautfy.domain.Agendamento;
 import com.projetointegrador.letsbeautfy.domain.Cliente;
 import com.projetointegrador.letsbeautfy.domain.Colaborador;
 import com.projetointegrador.letsbeautfy.domain.dtos.AgendamentoDTO;
-import com.projetointegrador.letsbeautfy.domain.enums.Prioridade;
-import com.projetointegrador.letsbeautfy.domain.enums.Status;
+import com.projetointegrador.letsbeautfy.domain.enums.Horarios;
 import com.projetointegrador.letsbeautfy.repositories.AgendamentosRepository;
 import com.projetointegrador.letsbeautfy.services.exceptions.ObjectnotFoudException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -60,11 +59,12 @@ public class AgendamentoService {
 //          agendamento.setDataAgendada(LocalDate.now());
 //    }
         agendamento.setDataAgendada(LocalDate.parse(obj.getDataAgendada()));
+        agendamento.setHoraAgendada(Horarios.toEnum(obj.getHoraAgendada()));
         agendamento.setColaborador(colaborador);
         agendamento.setCliente(cliente);
         agendamento.setTitulo(obj.getTitulo());
-        agendamento.setPrioridade(Prioridade.toEnum(obj.getPrioridade()));
-        agendamento.setStatus(Status.toEnum(obj.getStatus()));
+//        agendamento.setPrioridade(Prioridade.toEnum(obj.getPrioridade()));
+//        agendamento.setStatus(Status.toEnum(obj.getStatus()));
         agendamento.setObservacoes(obj.getObservacoes());
         return agendamento;
     }

@@ -1,8 +1,7 @@
 package com.projetointegrador.letsbeautfy.domain;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.projetointegrador.letsbeautfy.domain.enums.Prioridade;
-import com.projetointegrador.letsbeautfy.domain.enums.Status;
+import com.projetointegrador.letsbeautfy.domain.enums.Horarios;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -23,8 +22,10 @@ public class Agendamento implements Serializable {
     @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDate dataAgendada;
 
-    private Prioridade prioridade;
-    private Status status;
+    private Horarios horaAgendada;
+
+//    private Prioridade prioridade;
+//    private Status status;
     private String titulo;
     private String observacoes;
 
@@ -40,12 +41,13 @@ public class Agendamento implements Serializable {
         super();
     }
 
-    public Agendamento(Integer id, String dataAgendada, Prioridade prioridade, Status status, String titulo, String observacoes, Colaborador colaborador, Cliente cliente) {
+    public Agendamento(Integer id, String dataAgendada, Horarios horaAgendada, String titulo, String observacoes, Colaborador colaborador, Cliente cliente) {
         super();
         this.id = id;
         this.dataAgendada = LocalDate.parse(dataAgendada);
-        this.prioridade = prioridade;
-        this.status = status;
+        this.horaAgendada = horaAgendada;
+//        this.prioridade = prioridade;
+//        this.status = status;
         this.titulo = titulo;
         this.observacoes = observacoes;
         this.colaborador = colaborador;
@@ -76,21 +78,27 @@ public class Agendamento implements Serializable {
         this.dataAgendada = dataAgendada;
     }
 
-    public Prioridade getPrioridade() {
-        return prioridade;
+    public Horarios getHoraAgendada() { return horaAgendada; }
+
+    public void setHoraAgendada(Horarios horaAgendada) {
+        this.horaAgendada = horaAgendada;
     }
 
-    public void setPrioridade(Prioridade prioridade) {
-        this.prioridade = prioridade;
-    }
-
-    public Status getStatus() {
-        return status;
-    }
-
-    public void setStatus(Status status) {
-        this.status = status;
-    }
+//    public Prioridade getPrioridade() {
+//        return prioridade;
+//    }
+//
+//    public void setPrioridade(Prioridade prioridade) {
+//        this.prioridade = prioridade;
+//    }
+//
+//    public Status getStatus() {
+//        return status;
+//    }
+//
+//    public void setStatus(Status status) {
+//        this.status = status;
+//    }
 
     public String getTitulo() {
         return titulo;

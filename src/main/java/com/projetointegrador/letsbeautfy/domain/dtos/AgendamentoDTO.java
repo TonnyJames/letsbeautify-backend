@@ -17,10 +17,14 @@ public class AgendamentoDTO implements Serializable {
     @NotNull
     @JsonFormat(pattern = "dd/MM/yyyy")
     private String dataAgendada;
-    @NotNull(message = "O campo PRIORIDADE é obrigatório")
-    private Integer prioridade;
-    //@NotNull(message = "O campo STATUS é obrigatório")
-    private Integer status;
+    @NotNull
+    private Integer horaAgendada;
+
+//    @NotNull(message = "O campo PRIORIDADE é obrigatório")
+//    private Integer prioridade;
+//    @NotNull(message = "O campo STATUS é obrigatório")
+//    private Integer status;
+
     @NotNull(message = "O campo TÍTULO é obrigatório")
     private String titulo;
     @NotNull(message = "O campo OBSERVAÇÕES é obrigatório")
@@ -40,8 +44,9 @@ public class AgendamentoDTO implements Serializable {
         this.id = obj.getId();
         this.dataCriacao = obj.getDataCriacao();
         this.dataAgendada = obj.getDataAgendada().toString();
-        this.prioridade = obj.getPrioridade().getCodigo();
-        this.status = obj.getStatus().getCodigo();
+        this.horaAgendada = obj.getHoraAgendada().getCodigo();
+//        this.prioridade = obj.getPrioridade().getCodigo();
+//        this.status = obj.getStatus().getCodigo();
         this.titulo = obj.getTitulo();
         this.observacoes = obj.getObservacoes();
         this.colaborador = obj.getColaborador().getId();
@@ -74,21 +79,29 @@ public class AgendamentoDTO implements Serializable {
         this.dataAgendada = dataAgendada;
     }
 
-    public Integer getPrioridade() {
-        return prioridade;
+    public Integer getHoraAgendada() {
+        return horaAgendada;
     }
 
-    public void setPrioridade(Integer prioridade) {
-        this.prioridade = prioridade;
+    public void setHoraAgendada(Integer horaAgendada) {
+        this.horaAgendada = horaAgendada;
     }
 
-    public Integer getStatus() {
-        return status;
-    }
-
-    public void setStatus(Integer status) {
-        this.status = status;
-    }
+//    public Integer getPrioridade() {
+//        return prioridade;
+//    }
+//
+//    public void setPrioridade(Integer prioridade) {
+//        this.prioridade = prioridade;
+//    }
+//
+//    public Integer getStatus() {
+//        return status;
+//    }
+//
+//    public void setStatus(Integer status) {
+//        this.status = status;
+//    }
 
     public String getTitulo() {
         return titulo;
