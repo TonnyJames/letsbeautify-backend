@@ -28,11 +28,11 @@ public class DBService {
     private BCryptPasswordEncoder encoder;
 
     public void instanciaDB(){
-        Colaborador colab1 = new Colaborador(null, "Jorge", "828.317.710-99", "jorge@mail.com", encoder.encode("123"));
+        Colaborador colab1 = new Colaborador(null, "Bruna", "828.317.710-99", "bruna@mail.com", encoder.encode("123"));
         colab1.addPerfil(Perfil.ADMIN);
         Colaborador colab2 = new Colaborador(null, "Tonny", "862.373.200-67", "tonny@mail.com", encoder.encode("123"));
         colab2.addPerfil(Perfil.ADMIN);
-        Colaborador colab3 = new Colaborador(null, "Luiz", "098.146.930-22", "luiz@mail.com", encoder.encode("123"));
+        Colaborador colab3 = new Colaborador(null, "Roger", "098.146.930-22", "roger@mail.com", encoder.encode("123"));
         colab3.addPerfil(Perfil.COLABORADOR);
 
         Cliente cli1 = new Cliente(null, "Jack", "754.092.730-52", "jack@mail.com", encoder.encode("123"));
