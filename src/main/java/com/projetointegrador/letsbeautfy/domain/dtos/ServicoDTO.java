@@ -3,6 +3,7 @@ package com.projetointegrador.letsbeautfy.domain.dtos;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.projetointegrador.letsbeautfy.domain.Cliente;
 import com.projetointegrador.letsbeautfy.domain.Servico;
+import com.projetointegrador.letsbeautfy.domain.enums.Categoria;
 import com.projetointegrador.letsbeautfy.domain.enums.Perfil;
 
 import javax.validation.constraints.NotNull;
@@ -19,7 +20,7 @@ public class ServicoDTO implements Serializable {
     protected Integer id;
 
     @NotNull(message = "O campo CATEGORIA é requerido")
-    protected String categoria;
+    protected Categoria categoria;
 
     @NotNull(message = "O campo NOME é requerido")
     protected String nmNegocio;
@@ -73,11 +74,11 @@ public class ServicoDTO implements Serializable {
         this.id = id;
     }
 
-    public String getCategoria() {
+    public Categoria getCategoria() {
         return categoria;
     }
 
-    public void setCategoria(String categoria) {
+    public void setCategoria(Categoria categoria) {
         this.categoria = categoria;
     }
 
