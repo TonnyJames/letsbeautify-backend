@@ -20,6 +20,7 @@ public class Agendamento implements Serializable {
     @Column(name = "data_criação")
     @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDate dataCriacao = LocalDate.now();
+
     @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDate dataAgendada;
 
@@ -38,12 +39,15 @@ public class Agendamento implements Serializable {
     @JoinColumn(name = "cliente_id")
     private Cliente cliente;
 
+    @ManyToOne
+    @JoinColumn(name = "servico_id")
+    private Servico servico;
+
     public Agendamento() {
         super();
     }
 
-    public Agendamento(Integer id, String dataAgendada, Horarios horaAgendada, String titulo, String observacoes, Colaborador colaborador, Cliente cliente) {
-        super();
+    public Agendamento(Integer id, String dataAgendada, Horarios horaAgendada, String titulo, String observacoes, Colaborador colaborador, Cliente cliente, Servico servico) {
         this.id = id;
         this.dataAgendada = LocalDate.parse(dataAgendada);
         this.horaAgendada = horaAgendada;
@@ -53,6 +57,7 @@ public class Agendamento implements Serializable {
         this.observacoes = observacoes;
         this.colaborador = colaborador;
         this.cliente = cliente;
+        this.servico = servico;
     }
 
     public Integer getId() {
@@ -131,6 +136,14 @@ public class Agendamento implements Serializable {
 
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
+    }
+
+    public Servico getServico() {
+        return servico;
+    }
+
+    public void setServico(Servico servico) {
+        this.servico = servico;
     }
 
     @Override
