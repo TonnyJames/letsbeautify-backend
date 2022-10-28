@@ -5,22 +5,24 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.projetointegrador.letsbeautfy.domain.dtos.ServicoDTO;
 import com.projetointegrador.letsbeautfy.domain.enums.Categoria;
-import com.projetointegrador.letsbeautfy.domain.enums.Perfil;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.time.LocalDate;
-import java.util.*;
-import java.util.stream.Collectors;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
 
 @Entity
-public class Servico {
+public class Servico implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    protected Integer id;
+    private Integer id;
 
+    @CollectionTable(name = "CATEGORIA")
     private Categoria categoria;
     private String nmNegocio;
 
@@ -31,17 +33,16 @@ public class Servico {
     @Column(unique = true)
     private String email;
 
-    @Column(unique = true)
-    private String senha;
+//    private String senha;
 
-    @ElementCollection(fetch = FetchType.EAGER)
-    @CollectionTable(name = "PERFIS")
-    private Set<Integer> perfis = new HashSet<>();
+//    @ElementCollection(fetch = FetchType.EAGER)
+//    @CollectionTable(name = "PERFIS")
+//    private Set<Integer> perfis = new HashSet<>();
 
     @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDate dataCriacao = LocalDate.now();
 
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "cliente_id")
     private Cliente responsavel;
 
@@ -50,19 +51,18 @@ public class Servico {
     private List<Agendamento> agendamentos = new ArrayList<>();
 
     public Servico() {
-        addPerfis(Perfil.SERVICO);
+//        addPerfis(Perfil.SERVICO);
     }
 
-    public Servico(Integer id, Categoria categoria, String nmNegocio, String nrInsc, String telefone, String email, String senha, Set<Integer> perfis, LocalDate dataCriacao, Cliente responsavel) {
+    public Servico(Integer id, Categoria categoria, String nmNegocio, String nrInsc, String telefone, String email/*, String senha*/, Cliente responsavel) {
         this.id = id;
         this.categoria = categoria;
         this.nmNegocio = nmNegocio;
         this.nrInsc = nrInsc;
         this.telefone = telefone;
         this.email = email;
-        this.senha = senha;
-        this.perfis = perfis;
-        this.dataCriacao = dataCriacao;
+//        this.senha = senha;
+//        addPerfis(Perfil.SERVICO);
         this.responsavel = responsavel;
     }
 
@@ -73,11 +73,11 @@ public class Servico {
         this.nrInsc = obj.getNrInsc();
         this.telefone = obj.getTelefone();
         this.email = obj.getEmail();
-        this.senha = obj.getSenha();
-        this.perfis = obj.getPerfis().stream().map(x -> x.getCodigo()).collect(Collectors.toSet());
+//        this.senha = obj.getSenha();
+//        this.perfis = obj.getPerfis().stream().map(x -> x.getCodigo()).collect(Collectors.toSet());
         this.dataCriacao = obj.getDataCriacao();
         this.responsavel = obj.getResponsavel();
-        addPerfis(Perfil.SERVICO);
+//        addPerfis(Perfil.SERVICO);
     }
 
 
@@ -131,21 +131,21 @@ public class Servico {
         this.email = email;
     }
 
-    public String getSenha() {
-        return senha;
-    }
+//    public String getSenha() {
+//        return senha;
+//    }
+//
+//    public void setSenha(String senha) {
+//        this.senha = senha;
+//    }
 
-    public void setSenha(String senha) {
-        this.senha = senha;
-    }
-
-    public Set<Perfil> getPerfis()  {
-        return perfis.stream().map(x -> Perfil.toEnum(x)).collect(Collectors.toSet());
-    }
-
-    public void addPerfis(Perfil perfil) {
-        this.perfis.add(perfil.getCodigo());
-    }
+//    public Set<Perfil> getPerfis()  {
+//        return perfis.stream().map(x -> Perfil.toEnum(x)).collect(Collectors.toSet());
+//    }
+//
+//    public void addPerfis(Perfil perfil) {
+//        this.perfis.add(perfil.getCodigo());
+//    }
 
     public LocalDate getDataCriacao() {
         return dataCriacao;
