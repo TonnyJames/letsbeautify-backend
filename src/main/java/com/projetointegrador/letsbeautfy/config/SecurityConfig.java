@@ -26,7 +26,7 @@ import java.util.Arrays;
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-    private static final String[] PUBLIC_MATCHERS = {"/h2-console/**", "/registrar"};
+    private static final String[] PUBLIC_MATCHERS = {"/h2-console/**", "/registrar", "/consulta"};
 
     @Autowired
     private Environment env;
@@ -42,8 +42,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         }
 
         http.cors().and().csrf().disable();
+
         http.addFilter(new JWTAuthenticationFilter(authenticationManager(), jwtUtil));
         http.addFilter(new JWTAuthorizationFilter(authenticationManager(), jwtUtil, userDetailsService));
+
         http.authorizeRequests()
                         .antMatchers(PUBLIC_MATCHERS).permitAll()
                         .anyRequest().authenticated()
@@ -68,6 +70,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         CorsConfiguration configuration = new CorsConfiguration().applyPermitDefaultValues();
         configuration.setAllowedMethods(Arrays.asList("POST", "GET", "PUT", "DELETE", "OPTIONS"));
         final UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        configuration.addAllowedHeader("*");
         source.registerCorsConfiguration("/**", configuration);
         return source;
     }

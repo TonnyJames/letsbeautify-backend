@@ -2,7 +2,6 @@ package com.projetointegrador.letsbeautfy.domain;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.projetointegrador.letsbeautfy.domain.enums.Horarios;
-
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
