@@ -4,6 +4,7 @@ package com.projetointegrador.letsbeautfy.resources;
 import com.projetointegrador.letsbeautfy.domain.Servico;
 import com.projetointegrador.letsbeautfy.domain.dtos.ServicoDTO;
 import com.projetointegrador.letsbeautfy.services.ServicoService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
@@ -15,9 +16,10 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping(value = "/servico")
+@RequestMapping(value = "/servicos")
 public class servicoResource {
 
+    @Autowired
     private ServicoService service;
 
     @GetMapping(value = "/{id}")
@@ -33,7 +35,7 @@ public class servicoResource {
         return ResponseEntity.ok().body(listDTO);
     }
 
-    @PreAuthorize("hasAnyRole('ADMIN')")
+    @PreAuthorize("hasAnyRole('CLIENTE')")
     @PostMapping
     public ResponseEntity<ServicoDTO> create(@Valid @RequestBody ServicoDTO objDTO) {
         Servico newObj = service.create(objDTO);
