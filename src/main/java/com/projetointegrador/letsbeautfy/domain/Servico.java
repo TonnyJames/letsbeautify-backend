@@ -1,11 +1,8 @@
 package com.projetointegrador.letsbeautfy.domain;
 
-
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.projetointegrador.letsbeautfy.domain.dtos.ServicoDTO;
 import com.projetointegrador.letsbeautfy.domain.enums.Categoria;
-
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
@@ -33,54 +30,31 @@ public class Servico implements Serializable {
     @Column(unique = true)
     private String email;
 
-//    private String senha;
-
-//    @ElementCollection(fetch = FetchType.EAGER)
-//    @CollectionTable(name = "PERFIS")
-//    private Set<Integer> perfis = new HashSet<>();
-
     @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDate dataCriacao = LocalDate.now();
 
-    @OneToOne
-    @JoinColumn(name = "cliente_id")
-    private Cliente responsavel;
+    @ManyToOne
+    @JoinColumn(name = "admin_id")
+    private Cliente admin;
 
     @JsonIgnore
     @OneToMany(mappedBy = "servico")
     private List<Agendamento> agendamentos = new ArrayList<>();
 
     public Servico() {
-//        addPerfis(Perfil.SERVICO);
+        //vazio
     }
 
-    public Servico(Integer id, Categoria categoria, String nmNegocio, String nrInsc, String telefone, String email/*, String senha*/, Cliente responsavel) {
+    public Servico(Integer id, Categoria categoria, String nmNegocio, String nrInsc, String telefone, String email, Cliente admin) {
         this.id = id;
         this.categoria = categoria;
         this.nmNegocio = nmNegocio;
         this.nrInsc = nrInsc;
         this.telefone = telefone;
         this.email = email;
-//        this.senha = senha;
-//        addPerfis(Perfil.SERVICO);
-        this.responsavel = responsavel;
+        this.admin = admin;
     }
-
-    public Servico(ServicoDTO obj) {
-        this.id = obj.getId();
-        this.categoria = obj.getCategoria();
-        this.nmNegocio = obj.getNmNegocio();
-        this.nrInsc = obj.getNrInsc();
-        this.telefone = obj.getTelefone();
-        this.email = obj.getEmail();
-//        this.senha = obj.getSenha();
-//        this.perfis = obj.getPerfis().stream().map(x -> x.getCodigo()).collect(Collectors.toSet());
-        this.dataCriacao = obj.getDataCriacao();
-        this.responsavel = obj.getResponsavel();
-//        addPerfis(Perfil.SERVICO);
-    }
-
-
+    
     //getters and setters
 
     public Integer getId() {
@@ -131,22 +105,6 @@ public class Servico implements Serializable {
         this.email = email;
     }
 
-//    public String getSenha() {
-//        return senha;
-//    }
-//
-//    public void setSenha(String senha) {
-//        this.senha = senha;
-//    }
-
-//    public Set<Perfil> getPerfis()  {
-//        return perfis.stream().map(x -> Perfil.toEnum(x)).collect(Collectors.toSet());
-//    }
-//
-//    public void addPerfis(Perfil perfil) {
-//        this.perfis.add(perfil.getCodigo());
-//    }
-
     public LocalDate getDataCriacao() {
         return dataCriacao;
     }
@@ -155,12 +113,12 @@ public class Servico implements Serializable {
         this.dataCriacao = dataCriacao;
     }
 
-    public Cliente getResponsavel() {
-        return responsavel;
+    public Cliente getAdmin() {
+        return admin;
     }
 
-    public void setResponsavel(Cliente responsavel) {
-        this.responsavel = responsavel;
+    public void setAdmin(Cliente responsavel) {
+        this.admin = responsavel;
     }
 
     public List<Agendamento> getAgendamentos() {
