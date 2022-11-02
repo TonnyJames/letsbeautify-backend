@@ -54,7 +54,7 @@ public class Servico implements Serializable {
         this.email = email;
         this.admin = admin;
     }
-    
+
     //getters and setters
 
     public Integer getId() {

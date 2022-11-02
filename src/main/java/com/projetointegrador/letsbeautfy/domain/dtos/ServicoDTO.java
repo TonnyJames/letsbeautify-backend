@@ -1,7 +1,6 @@
 package com.projetointegrador.letsbeautfy.domain.dtos;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.projetointegrador.letsbeautfy.domain.Cliente;
 import com.projetointegrador.letsbeautfy.domain.Servico;
 import com.projetointegrador.letsbeautfy.domain.enums.Categoria;
 
@@ -13,33 +12,30 @@ public class ServicoDTO implements Serializable {
 
     private static final Long serialVersionUID = 1l;
 
-    protected Integer id;
+    private Integer id;
 
     @NotNull(message = "O campo CATEGORIA é requerido")
-    protected Categoria categoria;
+    private Categoria categoria;
 
     @NotNull(message = "O campo NOME é requerido")
-    protected String nmNegocio;
+    private String nmNegocio;
 
     @NotNull(message = "O campo NÚMERO DE INSCRIÇÃO é requerido")
-    protected String nrInsc; //cpf ou cnpj
+    private String nrInsc; //cpf ou cnpj
 
     @NotNull(message = "O campo TELEFONE é requerido")
-    protected String telefone;
+    private String telefone;
 
     @NotNull(message = "O campo EMAIL é requerido")
-    protected String email;
-
-//    @NotNull(message = "O campo SENHA é requerido")
-//    protected String senha;
-//
-//    protected Set<Integer> perfis = new HashSet<>();
+    private String email;
 
     @JsonFormat(pattern = "dd/MM/yyyy")
-    protected LocalDate dataCriacao = LocalDate.now();
+    private LocalDate dataCriacao = LocalDate.now();
 
-    @NotNull(message = "O campo NOME é requerido")
-    protected Cliente responsavel;
+    @NotNull(message = "O campo adminID é requerido")
+    private Integer admin;
+
+    private String nomeAdmin;
 
     public ServicoDTO() {
         //vazio
@@ -53,11 +49,9 @@ public class ServicoDTO implements Serializable {
         this.nrInsc = obj.getNrInsc();
         this.telefone = obj.getTelefone();
         this.email = obj.getEmail();
-//        this.senha = obj.getSenha();
-//        this.perfis = obj.getPerfis().stream().map(x -> x.getCodigo()).collect(Collectors.toSet());
         this.dataCriacao = obj.getDataCriacao();
-        this.responsavel = obj.getResponsavel();
-//        addPerfis(Perfil.SERVICO);
+        this.admin = obj.getAdmin().getId();
+        this.nomeAdmin = obj.getAdmin().getNome();
     }
 
     //getters and setters
@@ -111,22 +105,6 @@ public class ServicoDTO implements Serializable {
         this.email = email;
     }
 
-//    public String getSenha() {
-//        return senha;
-//    }
-//
-//    public void setSenha(String senha) {
-//        this.senha = senha;
-//    }
-//
-//    public Set<Perfil> getPerfis()  {
-//        return perfis.stream().map(x -> Perfil.toEnum(x)).collect(Collectors.toSet());
-//    }
-//
-//    public void addPerfis(Perfil perfil) {
-//        this.perfis.add(perfil.getCodigo());
-//    }
-
     public LocalDate getDataCriacao() {
         return dataCriacao;
     }
@@ -135,11 +113,19 @@ public class ServicoDTO implements Serializable {
         this.dataCriacao = dataCriacao;
     }
 
-    public Cliente getResponsavel() {
-        return responsavel;
+    public Integer getAdmin() {
+        return admin;
     }
 
-    public void setResponsavel(Cliente responsavel) {
-        this.responsavel = responsavel;
+    public void setAdmin(Integer admin) {
+        this.admin = admin;
+    }
+
+    public String getNomeAdmin() {
+        return nomeAdmin;
+    }
+
+    public void setNomeAdmin(String nomeAdmin) {
+        this.nomeAdmin = nomeAdmin;
     }
 }
