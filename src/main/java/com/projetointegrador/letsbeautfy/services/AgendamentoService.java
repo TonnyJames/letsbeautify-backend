@@ -24,9 +24,18 @@ public class AgendamentoService {
     @Autowired
     private ClienteService clienteService;
 
-    public Agendamento findById(Integer id){
+    public Agendamento findById(Integer id) {
         Optional<Agendamento> obj = repository.findById(id);
         return obj.orElseThrow(() -> new ObjectnotFoudException("Objeto Não encontrado " + id));
+    }
+
+    public List<Agendamento> findAgendamentoByCliente(String cpf) {
+        try {
+            List<Agendamento> objLista = repository.findAgendamentoByCliente_Cpf(cpf);
+            return objLista;
+        } catch (Exception e) {
+            throw new ObjectnotFoudException("Nenhum agendamento encontrado para o cpf: " + cpf + " em nossa base de dados.");
+        }
     }
 
     public List<Agendamento> findAll() {
@@ -45,13 +54,12 @@ public class AgendamentoService {
     }
 
 
-
-    private Agendamento newAgendamento(AgendamentoDTO obj){
+    private Agendamento newAgendamento(AgendamentoDTO obj) {
         Colaborador colaborador = colaboradorService.findById(obj.getColaborador());
         Cliente cliente = clienteService.findById(obj.getCliente());
 
         Agendamento agendamento = new Agendamento();
-        if(obj.getId() != null ){
+        if (obj.getId() != null) {
             agendamento.setId(obj.getId());
         }
 

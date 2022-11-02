@@ -26,7 +26,7 @@ import java.util.Arrays;
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-    private static final String[] PUBLIC_MATCHERS = {"/h2-console/**", "/registrar", "/consulta"};
+    private static final String[] PUBLIC_MATCHERS = {"/h2-console/**", "/registrar"};
 
     @Autowired
     private Environment env;
@@ -57,7 +57,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     public void configure(WebSecurity web) throws Exception {
         web.ignoring()
-                .antMatchers(HttpMethod.POST, "/clientes");
+                .antMatchers(HttpMethod.POST, "/clientes")
+                .antMatchers(HttpMethod.GET, "/agendamentos/cpf/**");
     }
 
     @Override

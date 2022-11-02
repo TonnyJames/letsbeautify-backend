@@ -26,6 +26,14 @@ public class AgendamentoResource {
         return ResponseEntity.ok().body(new AgendamentoDTO(obj));
     }
 
+//    @CrossOrigin(origins = "*")
+    @GetMapping(value = "cpf/{cpf}"/*, produces = "application/json"*/)
+    public ResponseEntity<List<AgendamentoDTO>> findAgendamentoByCpf(@PathVariable String cpf) {
+        List<Agendamento> objLista = service.findAgendamentoByCliente(cpf);
+        List<AgendamentoDTO> objListaDTO = objLista.stream().map(obj -> new AgendamentoDTO(obj)).collect(Collectors.toList());
+        return ResponseEntity.ok().body(objListaDTO);
+    }
+
     @GetMapping
     public ResponseEntity<List<AgendamentoDTO>> findAll(){
         List<Agendamento> list = service.findAll();
