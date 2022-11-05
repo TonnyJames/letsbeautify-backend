@@ -32,7 +32,7 @@ public class Cliente extends Pessoa{
     public Cliente(ClienteDTO obj) {
         this.id = obj.getId();
         this.nome = obj.getNome();
-        this.cpf = obj.getCpf();
+        this.cpf = obj.getCpf().replaceAll("[^0-9]", "");
         this.email = obj.getEmail();
         this.senha = obj.getSenha();
         this.perfis = obj.getPerfis().stream().map(x -> x.getCodigo()).collect(Collectors.toSet());
