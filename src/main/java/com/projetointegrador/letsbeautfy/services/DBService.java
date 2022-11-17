@@ -34,17 +34,17 @@ public class DBService {
 
     public void instanciaDB(){
 
-        Colaborador colab1 = new Colaborador(null, "Christine", "828.317.710-99", "christine@mail.com", encoder.encode("123"));
+        Colaborador colab1 = new Colaborador(null, "Christine", "82831771099", "christine@mail.com", encoder.encode("123"));
         colab1.addPerfil(Perfil.COLABORADOR);
-        Colaborador colab2 = new Colaborador(null, "Abraham", "862.373.200-67", "abraham@mail.com", encoder.encode("123"));
+        Colaborador colab2 = new Colaborador(null, "Abraham", "86237320067", "abraham@mail.com", encoder.encode("123"));
         colab2.addPerfil(Perfil.COLABORADOR);
-        Colaborador colab3 = new Colaborador(null, "Andre", "098.146.930-22", "andre@mail.com", encoder.encode("123"));
+        Colaborador colab3 = new Colaborador(null, "Andre", "09814693022", "andre@mail.com", encoder.encode("123"));
         colab3.addPerfil(Perfil.COLABORADOR);
 
-        Cliente cli1 = new Cliente(null, "Jack", "754.092.730-52", "jack@mail.com", encoder.encode("123"));
-        Cliente cli2 = new Cliente(null, "Bruna", "364.647.900-05", "bruna@mail.com", encoder.encode("123"));
-        Cliente cli3 = new Cliente(null, "Tonny", "759.097.140-58", "tonny@mail.com", encoder.encode("123"));
-        Cliente cli4 = new Cliente(null, "Roger", "620.765.620-28", "roger@mail.com", encoder.encode("123"));
+        Cliente cli1 = new Cliente(null, "Jack", "75409273052", "jack@mail.com", encoder.encode("123"));
+        Cliente cli2 = new Cliente(null, "Bruna", "36464790005", "bruna@mail.com", encoder.encode("123"));
+        Cliente cli3 = new Cliente(null, "Tonny", "75909714058", "tonny@mail.com", encoder.encode("123"));
+        Cliente cli4 = new Cliente(null, "Roger", "62076562028", "roger@mail.com", encoder.encode("123"));
 
         Servico serv1 = new Servico(null, Categoria.ESTUDIO_DE_ESTETICA, "Jack Beautify", "53416478000163", "(66) 2764-6317", "jackbeauty@mail.com", cli1);
         Servico serv2 = new Servico(null, Categoria.SALAO_DE_BELEZA, "Lia Hair", "56462241000107", "(98) 3398-5480", "liahair@mail.com", cli2);
