@@ -1,12 +1,14 @@
 package com.projetointegrador.letsbeautfy.domain.dtos;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.projetointegrador.letsbeautfy.domain.Agendamento;
 import com.projetointegrador.letsbeautfy.domain.Servico;
 import com.projetointegrador.letsbeautfy.domain.enums.Categoria;
 
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.List;
 
 public class ServicoDTO implements Serializable {
 
@@ -37,6 +39,8 @@ public class ServicoDTO implements Serializable {
 
     private String nomeAdmin;
 
+    private List<Agendamento> Agendamentos;
+
     public ServicoDTO() {
         //vazio
 //        addPerfis(Perfil.SERVICO);
@@ -52,6 +56,7 @@ public class ServicoDTO implements Serializable {
         this.dataCriacao = obj.getDataCriacao();
         this.admin = obj.getAdmin().getId();
         this.nomeAdmin = obj.getAdmin().getNome();
+        this.Agendamentos = obj.getAgendamentos();
     }
 
     //getters and setters
@@ -127,5 +132,13 @@ public class ServicoDTO implements Serializable {
 
     public void setNomeAdmin(String nomeAdmin) {
         this.nomeAdmin = nomeAdmin;
+    }
+
+    public List<Agendamento> getAgendamentos() {
+        return Agendamentos;
+    }
+
+    public void setAgendamentos(List<Agendamento> agendamentos) {
+        Agendamentos = agendamentos;
     }
 }
