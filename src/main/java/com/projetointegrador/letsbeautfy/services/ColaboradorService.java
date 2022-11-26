@@ -56,9 +56,9 @@ public class ColaboradorService {
 
     public void delete(Integer id) {
         Colaborador obj = findById(id);
-        if(obj.getAgendamentos().size() > 0){
-            throw new DataIntegrityViolationException("O colaborador tem agendamentos e não pode ser deletado!");
-        }
+//        if(obj.getAgendamentos().size() > 0){
+//            throw new DataIntegrityViolationException("O colaborador tem agendamentos e não pode ser deletado!");
+//        }
             repository.deleteById(id);
     }
 
