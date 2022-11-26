@@ -52,9 +52,9 @@ public class DBService {
         Servico serv4 = new Servico(null, Categoria.BARBARIA, "Barba Pirata", "16106001000155", "(84) 3548-5964", "barbapirata@mail.com", cli4);
 
 
-        Agendamento agend1 = new Agendamento(null, "2020-03-12", Horarios.H1,  "visita 001", "Primeira visita", colab1,cli1, serv3);
-        Agendamento agend2 = new Agendamento(null, "2021-04-11",Horarios.H2, "visita 002", "Cabelos e unhas ", colab2,cli2, serv2);
-        Agendamento agend3 = new Agendamento(null, "2022-05-29",Horarios.H3, "visita 003", "limpeza de pele", colab3,cli3, serv1);
+        Agendamento agend3 = new Agendamento(null, serv1, "2020-03-12", Horarios.H1,  "visita 001", "Primeira visita", colab1,cli1);
+        Agendamento agend2 = new Agendamento(null, serv2, "2021-04-11",Horarios.H2, "visita 002", "Cabelos e unhas ", colab2,cli2);
+        Agendamento agend1 = new Agendamento(null, serv3, "2022-05-29",Horarios.H3, "visita 003", "limpeza de pele", colab3,cli3);
 
 //        serv1.setAgendamentos(Arrays.asList(agend3));
 //        serv2.setAgendamentos(Arrays.asList(agend2));
