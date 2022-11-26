@@ -30,9 +30,9 @@ public class Agendamento implements Serializable {
     private String titulo;
     private String observacoes;
 
-    @ManyToOne
-    @JoinColumn(name = "colaborador_id")
-    private Colaborador colaborador;
+//    @ManyToOne
+//    @JoinColumn(name = "colaborador_id")
+//    private Colaborador colaborador;
 
     @ManyToOne
     @JoinColumn(name = "cliente_id")
@@ -46,17 +46,17 @@ public class Agendamento implements Serializable {
         super();
     }
 
-    public Agendamento(Integer id, String dataAgendada, Horarios horaAgendada, String titulo, String observacoes, Colaborador colaborador, Cliente cliente, Servico servico) {
+    public Agendamento(Integer id, Servico servico, String dataAgendada, Horarios horaAgendada, String titulo, String observacoes, Colaborador colaborador, Cliente cliente) {
         this.id = id;
+        this.servico = servico;
         this.dataAgendada = LocalDate.parse(dataAgendada);
         this.horaAgendada = horaAgendada;
 //        this.prioridade = prioridade;
 //        this.status = status;
         this.titulo = titulo;
         this.observacoes = observacoes;
-        this.colaborador = colaborador;
+//        this.colaborador = colaborador;
         this.cliente = cliente;
-        this.servico = servico;
     }
 
     public Integer getId() {
@@ -121,13 +121,13 @@ public class Agendamento implements Serializable {
         this.observacoes = observacoes;
     }
 
-    public Colaborador getColaborador() {
-        return colaborador;
-    }
-
-    public void setColaborador(Colaborador colaborador) {
-        this.colaborador = colaborador;
-    }
+//    public Colaborador getColaborador() {
+//        return colaborador;
+//    }
+//
+//    public void setColaborador(Colaborador colaborador) {
+//        this.colaborador = colaborador;
+//    }
 
     public Cliente getCliente() {
         return cliente;
