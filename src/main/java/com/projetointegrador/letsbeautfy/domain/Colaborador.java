@@ -1,13 +1,9 @@
 package com.projetointegrador.letsbeautfy.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.projetointegrador.letsbeautfy.domain.dtos.ColaboradorDTO;
 import com.projetointegrador.letsbeautfy.domain.enums.Perfil;
 
 import javax.persistence.Entity;
-import javax.persistence.OneToMany;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.stream.Collectors;
 
 @Entity
@@ -15,9 +11,9 @@ public class Colaborador extends Pessoa{
 
     private static final long serialVersionUID = 1L;
 
-    @JsonIgnore
-    @OneToMany(mappedBy = "colaborador")
-    private List<Agendamento> agendamentos = new ArrayList<>();
+//    @JsonIgnore
+//    @OneToMany(mappedBy = "colaborador")
+//    private List<Agendamento> agendamentos = new ArrayList<>();
 
     public Colaborador() {
         super();
@@ -39,11 +35,11 @@ public class Colaborador extends Pessoa{
         addPerfil(Perfil.CLIENTE);
     }
 
-    public List<Agendamento> getAgendamentos() {
-        return agendamentos;
-    }
-
-    public void setAgendamentos(List<Agendamento> agendamentos) {
-        this.agendamentos = agendamentos;
-    }
+//    public List<Agendamento> getAgendamentos() {
+//        return agendamentos;
+//    }
+//
+//    public void setAgendamentos(List<Agendamento> agendamentos) {
+//        this.agendamentos = agendamentos;
+//    }
 }
