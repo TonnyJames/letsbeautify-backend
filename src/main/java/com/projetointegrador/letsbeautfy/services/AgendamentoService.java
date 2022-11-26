@@ -2,7 +2,7 @@ package com.projetointegrador.letsbeautfy.services;
 
 import com.projetointegrador.letsbeautfy.domain.Agendamento;
 import com.projetointegrador.letsbeautfy.domain.Cliente;
-import com.projetointegrador.letsbeautfy.domain.Colaborador;
+import com.projetointegrador.letsbeautfy.domain.Servico;
 import com.projetointegrador.letsbeautfy.domain.dtos.AgendamentoDTO;
 import com.projetointegrador.letsbeautfy.domain.enums.Horarios;
 import com.projetointegrador.letsbeautfy.repositories.AgendamentosRepository;
@@ -23,6 +23,8 @@ public class AgendamentoService {
     private ColaboradorService colaboradorService;
     @Autowired
     private ClienteService clienteService;
+    @Autowired
+    private ServicoService servicoService;
 
     public Agendamento findById(Integer id) {
         Optional<Agendamento> obj = repository.findById(id);
@@ -55,8 +57,9 @@ public class AgendamentoService {
 
 
     private Agendamento newAgendamento(AgendamentoDTO obj) {
-        Colaborador colaborador = colaboradorService.findById(obj.getColaborador());
+//        Colaborador colaborador = colaboradorService.findById(obj.getColaborador());
         Cliente cliente = clienteService.findById(obj.getCliente());
+        Servico servico = servicoService.findById(obj.getServico());
 
         Agendamento agendamento = new Agendamento();
         if (obj.getId() != null) {
@@ -68,7 +71,8 @@ public class AgendamentoService {
 //    }
         agendamento.setDataAgendada(LocalDate.parse(obj.getDataAgendada()));
         agendamento.setHoraAgendada(Horarios.toEnum(obj.getHoraAgendada()));
-        agendamento.setColaborador(colaborador);
+        agendamento.setServico(servico);
+//        agendamento.setColaborador(colaborador);
         agendamento.setCliente(cliente);
         agendamento.setTitulo(obj.getTitulo());
 //        agendamento.setPrioridade(Prioridade.toEnum(obj.getPrioridade()));
