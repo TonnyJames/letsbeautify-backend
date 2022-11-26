@@ -12,6 +12,12 @@ public class AgendamentoDTO implements Serializable {
     private static final long serialVersionUID =1L;
 
     private Integer id;
+
+    @NotNull(message = "O campo SERVIÇO é obrigatório")
+    private Integer servico;
+
+    private String nomeServico;
+
     @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDate dataCriacao = LocalDate.now();
     @NotNull
@@ -27,13 +33,14 @@ public class AgendamentoDTO implements Serializable {
 
     @NotNull(message = "O campo TÍTULO é obrigatório")
     private String titulo;
-    @NotNull(message = "O campo OBSERVAÇÕES é obrigatório")
+
     private String observacoes;
-    @NotNull(message = "O campo COLABORADOR é obrigatório")
-    private Integer colaborador;
+
+//    private Integer colaborador;
     @NotNull(message = "O campo CLIENTE é obrigatório")
     private Integer cliente;
-    private String nomeColaborador;
+
+//    private String nomeColaborador;
     private String nomeCliente;
 
     public AgendamentoDTO() {
@@ -42,6 +49,8 @@ public class AgendamentoDTO implements Serializable {
 
     public AgendamentoDTO(Agendamento obj) {
         this.id = obj.getId();
+        this.servico = obj.getServico().getId();
+        this.nomeServico = obj.getServico().getNmNegocio();
         this.dataCriacao = obj.getDataCriacao();
         this.dataAgendada = obj.getDataAgendada().toString();
         this.horaAgendada = obj.getHoraAgendada().getCodigo();
@@ -49,10 +58,10 @@ public class AgendamentoDTO implements Serializable {
 //        this.status = obj.getStatus().getCodigo();
         this.titulo = obj.getTitulo();
         this.observacoes = obj.getObservacoes();
-        this.colaborador = obj.getColaborador().getId();
+//        this.colaborador = obj.getColaborador().getId();
         this.cliente = obj.getCliente().getId();
         this.nomeCliente = obj.getCliente().getNome();
-        this.nomeColaborador = obj.getColaborador().getNome();
+//        this.nomeColaborador = obj.getColaborador().getNome();
     }
 
     public Integer getId() {
@@ -61,6 +70,22 @@ public class AgendamentoDTO implements Serializable {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public Integer getServico() {
+        return servico;
+    }
+
+    public void setServico(Integer servico) {
+        this.servico = servico;
+    }
+
+    public String getNomeServico() {
+        return nomeServico;
+    }
+
+    public void setNomeServico(String nomeServico) {
+        this.nomeServico = nomeServico;
     }
 
     public LocalDate getDataCriacao() {
@@ -119,13 +144,13 @@ public class AgendamentoDTO implements Serializable {
         this.observacoes = observacoes;
     }
 
-    public Integer getColaborador() {
-        return colaborador;
-    }
-
-    public void setColaborador(Integer colaborador) {
-        this.colaborador = colaborador;
-    }
+//    public Integer getColaborador() {
+//        return colaborador;
+//    }
+//
+//    public void setColaborador(Integer colaborador) {
+//        this.colaborador = colaborador;
+//    }
 
     public Integer getCliente() {
         return cliente;
@@ -135,13 +160,13 @@ public class AgendamentoDTO implements Serializable {
         this.cliente = cliente;
     }
 
-    public String getNomeColaborador() {
-        return nomeColaborador;
-    }
-
-    public void setNomeColaborador(String nomeColaborador) {
-        this.nomeColaborador = nomeColaborador;
-    }
+//    public String getNomeColaborador() {
+//        return nomeColaborador;
+//    }
+//
+//    public void setNomeColaborador(String nomeColaborador) {
+//        this.nomeColaborador = nomeColaborador;
+//    }
 
     public String getNomeCliente() {
         return nomeCliente;
