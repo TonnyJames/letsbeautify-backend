@@ -3,11 +3,9 @@ package com.projetointegrador.letsbeautfy.services;
 
 import com.projetointegrador.letsbeautfy.domain.Agendamento;
 import com.projetointegrador.letsbeautfy.domain.Cliente;
-import com.projetointegrador.letsbeautfy.domain.Colaborador;
 import com.projetointegrador.letsbeautfy.domain.Servico;
 import com.projetointegrador.letsbeautfy.domain.enums.Categoria;
 import com.projetointegrador.letsbeautfy.domain.enums.Horarios;
-import com.projetointegrador.letsbeautfy.domain.enums.Perfil;
 import com.projetointegrador.letsbeautfy.repositories.AgendamentosRepository;
 import com.projetointegrador.letsbeautfy.repositories.ClienteRepository;
 import com.projetointegrador.letsbeautfy.repositories.ColaboradorRepository;
@@ -34,36 +32,36 @@ public class DBService {
 
     public void instanciaDB(){
 
-        Colaborador colab1 = new Colaborador(null, "Christine", "82831771099", "christine@mail.com", encoder.encode("123"));
-        colab1.addPerfil(Perfil.COLABORADOR);
-        Colaborador colab2 = new Colaborador(null, "Abraham", "86237320067", "abraham@mail.com", encoder.encode("123"));
-        colab2.addPerfil(Perfil.COLABORADOR);
-        Colaborador colab3 = new Colaborador(null, "Andre", "09814693022", "andre@mail.com", encoder.encode("123"));
-        colab3.addPerfil(Perfil.COLABORADOR);
+//        Colaborador colab1 = new Colaborador(null, "Christine", "82831771099", "christine@mail.com", encoder.encode("123"));
+//        colab1.addPerfil(Perfil.COLABORADOR);
+//        Colaborador colab2 = new Colaborador(null, "Abraham", "86237320067", "abraham@mail.com", encoder.encode("123"));
+//        colab2.addPerfil(Perfil.COLABORADOR);
+//        Colaborador colab3 = new Colaborador(null, "Andre", "09814693022", "andre@mail.com", encoder.encode("123"));
+//        colab3.addPerfil(Perfil.COLABORADOR);
 
-        Cliente cli1 = new Cliente(null, "Jack", "75409273052", "jack@mail.com", encoder.encode("123"));
-        Cliente cli2 = new Cliente(null, "Bruna", "36464790005", "bruna@mail.com", encoder.encode("123"));
-        Cliente cli3 = new Cliente(null, "Tonny", "75909714058", "tonny@mail.com", encoder.encode("123"));
-        Cliente cli4 = new Cliente(null, "Roger", "62076562028", "roger@mail.com", encoder.encode("123"));
+        Cliente cli1 = new Cliente(null, "Jackeline dos Santos Soares", "75409273052", "jack@mail.com", encoder.encode("123"));
+        Cliente cli2 = new Cliente(null, "Bruna Pereira de Souza", "36464790005", "bruna@mail.com", encoder.encode("123"));
+        Cliente cli3 = new Cliente(null, "Tonny James P. Dos Reis", "75909714058", "tonny@mail.com", encoder.encode("123"));
+        Cliente cli4 = new Cliente(null, "Roger Yukio Delvalle", "62076562028", "roger@mail.com", encoder.encode("123"));
+        Cliente cli5 = new Cliente(null, "Luma Taynara Guimaraes Yoshida", "42006330004", "luma@mail.com", encoder.encode("123"));
+        Cliente cli6 = new Cliente(null, "André Santos Isidoro", "71807965066", "andre@mail.com", encoder.encode("123"));
 
-        Servico serv1 = new Servico(null, Categoria.ESTUDIO_DE_ESTETICA, "Jack Beautify", "53416478000163", "(66) 2764-6317", "jackbeauty@mail.com", cli1);
-        Servico serv2 = new Servico(null, Categoria.SALAO_DE_BELEZA, "Lia Hair", "56462241000107", "(98) 3398-5480", "liahair@mail.com", cli2);
-        Servico serv3 = new Servico(null, Categoria.BARBARIA, "Descanso dos Rudes", "07422607000109", "(21) 2986-4393", "ddr@mail.com", cli3);
-        Servico serv4 = new Servico(null, Categoria.BARBARIA, "Barba Pirata", "16106001000155", "(84) 3548-5964", "barbapirata@mail.com", cli4);
+        Servico serv1 = new Servico(null, Categoria.ESTETICA, "Jack Beautify", "53416478000163", "(11) 2764-6317", "jackbeautyfy@mail.com", cli1);
+        Servico serv2 = new Servico(null, Categoria.BELEZA, "Bruna's Studio Hair", "56462241000107", "(98) 3398-5480", "brunahair@mail.com", cli2);
+        Servico serv3 = new Servico(null, Categoria.BARBEARIA, "Descanso dos Rudes", "07422607000109", "(21) 2986-4393", "descansodosrudes@mail.com", cli3);
+        Servico serv4 = new Servico(null, Categoria.BARBEARIA, "Barba Pirata", "16106001000155", "(84) 3548-5964", "barbapirata@mail.com", cli4);
 
+        Agendamento agend1 = new Agendamento(null, serv4, "2022-12-28",Horarios.H3, "Corte cabelo e barba", "Corte sem maquina", cli3);
+        Agendamento agend2 = new Agendamento(null, serv1, "2022-12-11",Horarios.H2, "Luzes e unhas", "Não usar marca Luminous", cli2);
+        Agendamento agend3 = new Agendamento(null, serv2, "2022-12-12", Horarios.H1,  "Cilios e Sombrancelha", "", cli1);
+        Agendamento agend4 = new Agendamento(null, serv3, "2022-12-05",Horarios.H3, "Corte cabelo", "Estilo Pompador", cli4);
+        Agendamento agend5 = new Agendamento(null, serv2, "2022-12-05",Horarios.H3, "Unhas", "Unhas de Gel manutenção", cli5);
+        Agendamento agend6 = new Agendamento(null, serv4, "2022-12-05",Horarios.H3, "Corte cabelo", "Moicano", cli6);
 
-        Agendamento agend3 = new Agendamento(null, serv1, "2020-03-12", Horarios.H1,  "visita 001", "Primeira visita", colab1,cli1);
-        Agendamento agend2 = new Agendamento(null, serv2, "2021-04-11",Horarios.H2, "visita 002", "Cabelos e unhas ", colab2,cli2);
-        Agendamento agend1 = new Agendamento(null, serv3, "2022-05-29",Horarios.H3, "visita 003", "limpeza de pele", colab3,cli3);
-
-//        serv1.setAgendamentos(Arrays.asList(agend3));
-//        serv2.setAgendamentos(Arrays.asList(agend2));
-//        serv3.setAgendamentos(Arrays.asList(agend1));
-
-        colaboradorRepository.saveAll(Arrays.asList(colab1, colab2, colab3));
-        clienteRepository.saveAll(Arrays.asList(cli1, cli2, cli3, cli4));
+//        colaboradorRepository.saveAll(Arrays.asList(colab1, colab2, colab3));
+        clienteRepository.saveAll(Arrays.asList(cli1, cli2, cli3, cli4, cli5, cli6));
         servicoRepository.saveAll(Arrays.asList(serv1, serv2, serv3, serv4));
-        agendamentosRepository.saveAll(Arrays.asList(agend1, agend2, agend3));
+        agendamentosRepository.saveAll(Arrays.asList(agend1, agend2, agend3, agend4, agend5, agend6));
 //
     }
 }
