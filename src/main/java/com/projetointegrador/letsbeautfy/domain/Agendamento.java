@@ -46,7 +46,7 @@ public class Agendamento implements Serializable {
         super();
     }
 
-    public Agendamento(Integer id, Servico servico, String dataAgendada, Horarios horaAgendada, String titulo, String observacoes, Colaborador colaborador, Cliente cliente) {
+    public Agendamento(Integer id, Servico servico, String dataAgendada, Horarios horaAgendada, String titulo, String observacoes, Cliente cliente) {
         this.id = id;
         this.servico = servico;
         this.dataAgendada = LocalDate.parse(dataAgendada);
