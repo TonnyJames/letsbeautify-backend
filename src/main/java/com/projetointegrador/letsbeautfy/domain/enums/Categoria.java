@@ -2,7 +2,7 @@ package com.projetointegrador.letsbeautfy.domain.enums;
 
 public enum Categoria {
 
-    SALAO_DE_BELEZA(0, "ROLE_SALAO_DE_BELEZA"), BARBARIA(1, "ROLE_BARBEARIA"), ESTUDIO_DE_ESTETICA(2, "ROLE_ESTUDIO_DE_ESTETICA");
+    BELEZA(0, "ROLE_BELEZA"), BARBEARIA(1, "ROLE_BARBEARIA"), ESTETICA(2, "ROLE_ESTETICA");
 
     private Integer codigo;
     private String descricao;
